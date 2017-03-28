@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>任务详解图:该页面仅仅用于流程监控</title>
+
+<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+<meta http-equiv="description" content="this is my page">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+<script type="text/javascript" src="index/js/jquery-1.11.1.js"></script>
+<style>
+	.state{
+		width:20px;
+		height:20px;
+		background-color:black;
+		margin:auto auto;
+		margin-top: 20px;
+	}
+	#showMsg{
+		margin:auto auto;
+		margin-top: 20px;
+		width:100px;
+		height:200px;
+		text-align:center;
+	}
+
+</style>
+<script>
+	//根据id和id的leve判断登录者的权限，权限不同显示页面不同
+	var position=0;
+	var leve;
+	$(function(){
+		leve = 1;
+		if(leve==1){
+			$('.user').show();
+			$('#handle').hide();
+			$('#admin').hide();
+		}else if(leve==2){
+			$('#handle').show();
+			$('#admin').hide();
+			$('.user').hide();
+		}else if(leve==3){
+			$('#admin').show();
+			$('.user').hide();
+			$('#handle').hide();
+		}
+		
+		
+		var time1= setInterval("posi()",1000);
+	});
+	
+	function loadLeve(){
+		
+	}
+	function posi(){
+		position++;
+		if(position==5){
+			position=0;
+			$('#show1').css("background-color","black");
+			$('#show2').css("background-color","black");
+			$('#show3').css("background-color","black");
+			$('#show4').css("background-color","black");
+		}
+		timeer();
+	}
+	function timeer(){
+		if(position==1){
+			$('#show1').css("background-color","green");
+			$('#show2').css("background-color","black");
+			$('#show3').css("background-color","black");
+			$('#show4').css("background-color","black");
+		}else if(position==2){
+			$('#show2').css("background-color","green");
+			$('#show3').css("background-color","black");
+			$('#show4').css("background-color","black");
+		}else if(position==3){
+			$('#show3').css("background-color","green");
+			$('#show4').css("background-color","black");
+		}else if(position==4){
+			$('#show4').css("background-color","green");
+		}
+	}
+	
+	function rob(){
+		console.log('执行');
+		var url = "http//localhost:8080/testTwo/getLeve.do";
+		var data = {"leve":leve};
+		$.ajax(url,data,function(result){	
+		});
+	}
+	
+</script>
+</head>
+
+<body>
+	<div class="user">
+		<span>UserA</span>
+		<input type="button" value="抢订单" onclick="rob();">
+	</div >
+	<div class="user">
+		<span>UserB</span>
+		<input type="button" value="抢订单" onclick="rob();">
+	</div>
+	<div class="user">
+		<span>UserC</span>
+		<input type="button" value="抢订单" onclick="rob();">
+	</div>
+	<div id="handle">
+		<span>HandleA</span>
+		<input type="button" value="确定订单">
+	</div>
+	<div id="admin">
+		<span>AdminA</span>
+		<input type="button" value="查看流程">
+	</div>
+	<div id="showMsg">
+		<span>显示状态</span>
+		<div id="show1" class="state"></div>
+		<div id="show2" class="state"></div>
+		<div id="show3" class="state"></div>
+		<div id="show4" class="state"></div>
+	</div>
+</body>
+</html>
