@@ -1,5 +1,7 @@
 package com.lzp.dao;
 
+import org.hibernate.Session;
+
 import com.lzp.entity.Driver;
 import com.lzp.util.BaseDataSource;
 /**
@@ -8,14 +10,16 @@ import com.lzp.util.BaseDataSource;
  *
  */
 
-public class DriverLoginImp extends BaseDataSource implements DriverLogin{
+public class DriverLoginImp extends BaseDataSource<Driver> implements DriverLogin{
 
 	/**
 	 * driver登录信息验证
 	 */
 	@Override
 	public String driverLogin(String nameId, String password) {
-		
+		Session session = super.sessionFactory.openSession();
+		Driver driver = (Driver) session.byId("1");
+		System.out.println(driver.toString());
 		return null;
 	}
 

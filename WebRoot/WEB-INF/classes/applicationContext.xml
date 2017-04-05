@@ -24,8 +24,7 @@
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
-				<prop key=""></prop>
-				<prop key=""></prop>
+				
 			</props>
 			
 		</property>
@@ -39,7 +38,7 @@
 			</list>
 		
 		</property>
-		
+
 	</bean>
 </beans>
 

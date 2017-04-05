@@ -4,18 +4,23 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+
 import com.lzp.entity.User;
+import com.lzp.service.DriverToLogin;
 
 
 
 @Controller
 public class AllReq {
+	@Resource
+	public DriverToLogin driverLogin;
 	@RequestMapping(value="/getLeve.do")
 	public void getLeve(HttpServletRequest request,HttpServletResponse response){
 		System.out.println(request.getParameter("leve"));
@@ -53,6 +58,7 @@ public class AllReq {
 		String userId = request.getParameter("username");
 		String pwd = request.getParameter("password");
 		response.setContentType("text/xml;charset=UTF-8");
+		driverLogin.driverLogin(userId, pwd);
 		//System.out.println("login.do");
 		//根据唯一的userId，找到这个人信息，并对比pwd是否正确，正确后将此人信息存入session
 		return "login";
