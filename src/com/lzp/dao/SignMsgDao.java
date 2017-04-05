@@ -1,8 +1,8 @@
 package com.lzp.dao;
 
-import com.lzp.entity.Person;
+import com.lzp.entity.User;
 
 public interface SignMsgDao {
 	
-	public Person findByName(String name);
+	public User findByName(String name);
 }

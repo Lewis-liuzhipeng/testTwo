@@ -5,15 +5,15 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.lzp.dao.SignMsgDaoImpl;
-import com.lzp.entity.Person;
+import com.lzp.entity.User;
 
 public class signMsg {
 	
 	@Resource
 	private SignMsgDaoImpl sm;
 	
-	public Person findByName(String name){
-		Person per = sm.findByName(name);
+	public User findByName(String name){
+		User per = sm.findByName(name);
 		return per;
 	}
 }

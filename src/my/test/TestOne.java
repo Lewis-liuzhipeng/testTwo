@@ -16,7 +16,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.hibernate3.LocalSessionFactoryBean;
 
-import com.lzp.entity.Person;
+import com.lzp.entity.User;
 
 
 public class TestOne {

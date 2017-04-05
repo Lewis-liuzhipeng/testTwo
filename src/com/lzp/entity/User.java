@@ -2,7 +2,7 @@ package com.lzp.entity;
 
 import org.hibernate.sql.Template;
 
-public class Person {
+public class User {
 	private String id;
 	private String nickName;
 	private String password;
@@ -12,11 +12,11 @@ public class Person {
 	private Integer telNumber;
 	private Template signData;
 	private String leve;
-	public Person(){
+	public User(){
 		
 	}
 	
-	public Person(String id, String nickName, String password, String realName,
+	public User(String id, String nickName, String password, String realName,
 			String email, Integer qq, Integer telNumber, Template signData,
 			String leve) {
 		super();
@@ -108,7 +108,7 @@ public class Person {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		User other = (User) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
